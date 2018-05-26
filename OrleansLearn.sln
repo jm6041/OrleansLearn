@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrleansLearn", "OrleansLearn\OrleansLearn.csproj", "{222ECEA2-64EB-4680-99EF-0CCA48EEDC2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{222ECEA2-64EB-4680-99EF-0CCA48EEDC2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{222ECEA2-64EB-4680-99EF-0CCA48EEDC2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{222ECEA2-64EB-4680-99EF-0CCA48EEDC2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{222ECEA2-64EB-4680-99EF-0CCA48EEDC2C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20821FF8-477B-4736-8EC2-80EF51BFC034}
+	EndGlobalSection
+EndGlobal
