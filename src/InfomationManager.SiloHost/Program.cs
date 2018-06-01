@@ -69,6 +69,8 @@ namespace InfomationManager.SiloHost
 
         private static async Task<ISiloHost> StartSilo()
         {
+            var invariant = InvariantNameSqlServer; // for Microsoft SQL Server
+            string orleansConnectionString = "Data Source=.\\sqlexpress;Initial Catalog=OrleansUserTest;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
             string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=OrleansLearn;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
             var builder = new SiloHostBuilder()
                 .UseLocalhostClustering()
@@ -81,11 +83,20 @@ namespace InfomationManager.SiloHost
                 .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(SystemUserGrain).Assembly).WithReferences())
                 .ConfigureServices(services => services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(connectionString)))
                 .ConfigureLogging(logging => logging.AddConsole())
-                //.AddMemoryGrainStorageAsDefault();
+                .UseAdoNetClustering(opt =>
+                {
+                    opt.ConnectionString = orleansConnectionString;
+                    opt.Invariant = invariant;
+                })
+                .UseAdoNetReminderService(opt =>
+                {
+                    opt.Invariant = invariant;
+                    opt.ConnectionString = orleansConnectionString;
+                })
                 .AddAdoNetGrainStorageAsDefault(opt =>
                 {
-                    opt.ConnectionString = "Data Source=.\\sqlexpress;Initial Catalog=OrleansUserTest;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
-                    opt.Invariant = InvariantNameSqlServer;
+                    opt.ConnectionString = orleansConnectionString;
+                    opt.Invariant = invariant;
                     opt.UseJsonFormat = true;
                 });
 
