@@ -10,5 +10,7 @@ namespace InfomationManager.Abstractions
     {
         Task Add(SystemUser user);
         Task<List<SystemUser>> Get();
+        Task<SystemUser> GetById(Guid id);
+        Task Update(SystemUser user);
     }
 }

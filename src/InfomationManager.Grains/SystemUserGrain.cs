@@ -27,5 +27,16 @@ namespace InfomationManager.Grains
         {
             return _context.Users.ToListAsync();
         }
+
+        public Task<SystemUser> GetById(Guid Id)
+        {
+            return _context.Users.FindAsync(Id);
+        }
+
+        public Task Update(SystemUser user)
+        {
+            _context.Users.Update(user);
+            return _context.SaveChangesAsync();
+        }
     }
 }

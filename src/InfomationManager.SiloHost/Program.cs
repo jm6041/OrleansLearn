@@ -81,12 +81,13 @@ namespace InfomationManager.SiloHost
                 .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(SystemUserGrain).Assembly).WithReferences())
                 .ConfigureServices(services => services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(connectionString)))
                 .ConfigureLogging(logging => logging.AddConsole())
-                .AddAdoNetGrainStorage("LocalTestStore", opt =>
-                 {
-                     opt.ConnectionString = "Data Source=.\\sqlexpress;Initial Catalog=OrleansUserTest;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
-                     opt.Invariant = InvariantNameSqlServer;
-                     opt.UseJsonFormat = true;
-                 });
+                .AddMemoryGrainStorageAsDefault();
+                //.AddAdoNetGrainStorage("LocalTestStore", opt =>
+                // {
+                //     opt.ConnectionString = "Data Source=.\\sqlexpress;Initial Catalog=OrleansUserTest;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
+                //     opt.Invariant = InvariantNameSqlServer;
+                //     opt.UseJsonFormat = true;
+                // });
 
             var host = builder.Build();
             await host.StartAsync();
