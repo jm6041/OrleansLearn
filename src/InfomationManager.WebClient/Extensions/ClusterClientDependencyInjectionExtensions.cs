@@ -13,7 +13,6 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddClusterClientDefault(this IServiceCollection services)
         {
-            string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=OrleansUserClient;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
             IClusterClient client = new ClientBuilder()
                 .UseLocalhostClustering()
                 .Configure<ClusterOptions>(options =>
@@ -22,11 +21,6 @@ namespace Microsoft.Extensions.DependencyInjection
                     options.ServiceId = "UserTestApp";
                 })
                 .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(ISystemUserGrain).Assembly).WithReferences())
-                //.UseAdoNetClustering(opt =>
-                //{
-                //    opt.ConnectionString = connectionString;
-                //    opt.Invariant = "System.Data.SqlClient";
-                //})
                 .Build();
             services.AddSingleton(client);
             return services;
