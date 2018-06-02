@@ -6,9 +6,11 @@ using InfomationManager.Abstractions;
 using InfomationManager.Models;
 using Microsoft.EntityFrameworkCore;
 using Orleans;
+using Orleans.Providers;
 
 namespace InfomationManager.Grains
 {
+    [StorageProvider]
     public class SystemUserGrain : Grain<SystemUser>, ISystemUserGrain
     {
         private readonly ApplicationDbContext _context;
